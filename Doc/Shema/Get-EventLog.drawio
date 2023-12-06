@@ -1,0 +1,189 @@
+<mxfile host="app.diagrams.net" modified="2023-12-06T14:12:57.221Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0" etag="aTst2GZv8mIWlc3ao4GU" version="22.1.5" type="device" pages="2">
+  <diagram name="Page-1" id="K0iZO_jbxJBWdT6sPQ5k">
+    <mxGraphModel dx="792" dy="453" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="T8yorx5j06hbhfQWycoz-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="T8yorx5j06hbhfQWycoz-2" target="T8yorx5j06hbhfQWycoz-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-2" value="Début" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="314" y="30" width="120" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="T8yorx5j06hbhfQWycoz-7" target="T8yorx5j06hbhfQWycoz-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-7" value="Saisir le path de la liste des machines a contacter" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="244" y="120" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="T8yorx5j06hbhfQWycoz-11" target="T8yorx5j06hbhfQWycoz-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-11" value="Saisir le numéro correspondant au type de journal" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="244" y="300" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="T8yorx5j06hbhfQWycoz-12" target="T8yorx5j06hbhfQWycoz-16">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="674" y="430" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-27" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="T8yorx5j06hbhfQWycoz-15">
+          <mxGeometry x="-0.1586" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="T8yorx5j06hbhfQWycoz-12" target="T8yorx5j06hbhfQWycoz-51">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-53" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="T8yorx5j06hbhfQWycoz-52">
+          <mxGeometry x="-0.0599" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-12" value="Numéro en un nombre entier et qui est associé à un type de journal" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="149" y="390" width="450" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="T8yorx5j06hbhfQWycoz-16" target="T8yorx5j06hbhfQWycoz-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-16" value="Une erreur de type System.ArgumentException apparait&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="654" y="400" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-17" value="Fin" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="679" y="490" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="T8yorx5j06hbhfQWycoz-19" target="T8yorx5j06hbhfQWycoz-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-19" value="Afficher les types de journaux avec leur numéro associé" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="314" y="210" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="T8yorx5j06hbhfQWycoz-51" target="T8yorx5j06hbhfQWycoz-56">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-59" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="T8yorx5j06hbhfQWycoz-58">
+          <mxGeometry x="-0.0382" y="2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-61" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="T8yorx5j06hbhfQWycoz-51" target="T8yorx5j06hbhfQWycoz-60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-51" value="Est-ce que l&#39;utilisateur est administrateur ?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="545" width="321" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-55" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="T8yorx5j06hbhfQWycoz-56" target="T8yorx5j06hbhfQWycoz-57">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-56" value="Une erreur de type System.UnauthorizedAccessException apparait&amp;nbsp;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="24" y="553" width="220" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="T8yorx5j06hbhfQWycoz-57" value="Fin" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="73.99999999999997" y="650" width="120" height="40" as="geometry" />
+        </mxCell>
+        <UserObject label="A" link="data:page/id,r16wCeG2jRc74NNLMxrX" id="T8yorx5j06hbhfQWycoz-60">
+          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+            <mxGeometry x="410.5" y="700" width="80" height="80" as="geometry" />
+          </mxCell>
+        </UserObject>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="r16wCeG2jRc74NNLMxrX" name="Page-2">
+    <mxGraphModel dx="1386" dy="-376" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Am3xNxT-2hCFg-ApRuaP-2" target="Am3xNxT-2hCFg-ApRuaP-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-2" value="essayer d&#39;ouvrir le remoting session" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="306" y="1300" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Am3xNxT-2hCFg-ApRuaP-6" target="Am3xNxT-2hCFg-ApRuaP-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-4" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Am3xNxT-2hCFg-ApRuaP-3">
+          <mxGeometry x="0.1412" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Am3xNxT-2hCFg-ApRuaP-6" target="Am3xNxT-2hCFg-ApRuaP-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-6" value="Le remoting session s&#39;est bien ouvert" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="176" y="1390" width="450" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Am3xNxT-2hCFg-ApRuaP-8" target="Am3xNxT-2hCFg-ApRuaP-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="731" y="1930" />
+              <mxPoint x="461" y="1930" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-8" value="L&#39;erreur s&#39;écrit dans un fichier error.log" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="671" y="1460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-9" value="Fin" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="341" y="1920" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Am3xNxT-2hCFg-ApRuaP-11" target="Am3xNxT-2hCFg-ApRuaP-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-11" value="Essayer d&#39;afficher l&#39;event log du type choisi," style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="336" y="1520" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Am3xNxT-2hCFg-ApRuaP-16" target="Am3xNxT-2hCFg-ApRuaP-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-13" value="Non" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Am3xNxT-2hCFg-ApRuaP-12">
+          <mxGeometry x="-0.0687" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Am3xNxT-2hCFg-ApRuaP-16" target="Am3xNxT-2hCFg-ApRuaP-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-15" value="Oui" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="Am3xNxT-2hCFg-ApRuaP-14">
+          <mxGeometry x="-0.4412" y="1" relative="1" as="geometry">
+            <mxPoint y="2" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-16" value="L&#39;event log du type choisi s&#39;est bien affiché" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="230.25" y="1610" width="341.5" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Am3xNxT-2hCFg-ApRuaP-18" target="Am3xNxT-2hCFg-ApRuaP-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="91" y="1940" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-18" value="L&#39;erreur s&#39;écrit dans un fichier error.log" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="37" y="1620" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="dJoo_wEldVEDOiIGDQey-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Am3xNxT-2hCFg-ApRuaP-20" target="dJoo_wEldVEDOiIGDQey-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-20" value="Ecrire dans lun fichier .log l&#39;event log" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="336" y="1720" width="130" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Am3xNxT-2hCFg-ApRuaP-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="Am3xNxT-2hCFg-ApRuaP-22" target="Am3xNxT-2hCFg-ApRuaP-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <UserObject label="A" link="data:page/id,K0iZO_jbxJBWdT6sPQ5k" id="Am3xNxT-2hCFg-ApRuaP-22">
+          <mxCell style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+            <mxGeometry x="361" y="1180" width="80" height="80" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="dJoo_wEldVEDOiIGDQey-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="dJoo_wEldVEDOiIGDQey-1" target="Am3xNxT-2hCFg-ApRuaP-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dJoo_wEldVEDOiIGDQey-1" value="Afficher le ràsultat sir la console" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="336" y="1820" width="130" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
