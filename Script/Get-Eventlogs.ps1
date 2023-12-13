@@ -50,6 +50,10 @@ function TestAdmin {
     return $principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
+$fileContent = Get-Content -Path $ComputerPath
+
+Set-Variable ERROR_MESSAGE -Option Constant -Value "Une erreur s'est produit lors de la connection au"
+
 
 ###################################################################################################################
 # Area for the tests, for example admin rights, existing path or the presence of parameters
@@ -113,8 +117,10 @@ else
         New-Item -ItemType Directory -Force -Name "Logs"
     }
 
-    foreach ($computer in $ComputerPath) {
 
+
+
+    foreach ($computer in $fileContent) {
         $date = Get-Date -Format "yyyy-MM-dd-hh-mm"
 
         $password = ConvertTo-SecureString "ETML_2023" -AsPlainText -Force
@@ -127,10 +133,16 @@ else
             if ($session) {
 
                 $eventLog = Invoke-Command -Session $session -ScriptBlock {
-    
-                    Get-EventLog $eventList[$chosenEvent] | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
+                    param($events)
 
-                }
+                    if (!$events) {
+                        Write-Output "Le Pc avec le nom $($computer) ne possède pas de journaux windows possèdant ce nom " >> "./Logs/$date`_error.log"
+                    }
+                    else {
+                        Get-EventLog $events | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
+                    }
+
+                } -ArgumentList $eventList[$chosenEvent]
 
                 Write-Output $eventLog > "./Logs/$date`_$computer`_logs.log"
             }
