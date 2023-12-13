@@ -1,0 +1,88 @@
+﻿<#
+.NOTES
+    *****************************************************************************
+    ETML
+    Script's name:	Thomas-Scan-Number.ps1
+    Author:	Thomas Nardou
+    Date:	13.12.2023
+ 	*****************************************************************************
+    Modifications
+ 	Date  : -
+ 	Author: -
+ 	Reasons: -
+ 	*****************************************************************************
+.SYNOPSIS
+	Scan les nombre rentreé par l'utilisateur et fait la somme des nombre rentreé, affiche les nombre de paramètre rentré et affiche le produit de tout les nombres rentré
+ 	
+.DESCRIPTION
+    Scan les nombre rentreé par l'utilisateur et lui dis si les paramètres rentrés sont : 
+    - des chiffre positifs
+    - des chiffre négatifs
+    - le chiffre est égale à zéro 
+    - si ce n'est pas un chiffre
+
+    Et la fin le programme : 
+        - fait la somme des nombre rentreé, 
+        - affiche les nombre de paramètre rentré qui sont des nombres
+        - affiche le produit de tout les nombres rentré
+
+.OUTPUTS
+	Affiche si le nombre est négatif ou pas ou si il est égal à zéro ou si ce n'est pas un chiffre
+	
+.EXAMPLE
+	.\Thomas-Scan-Number.ps1 8 -9.5 abc
+
+    Result : 
+	    - 8 is positive
+     - 9 is negative
+     - abc isn't numeric
+	
+.EXAMPLE
+	.\Thomas-Scan-Number.ps1
+	Result : Display help when no parameter are present
+	
+.LINK
+    -
+#>
+
+Write-Host
+
+if ($args.Length -gt 0) {
+
+    $count = 0
+    $sum = 0
+    $product = 0
+
+    foreach ($parameter in $args) {
+     try {
+        [double]$val = $parameter
+
+        if ($val -gt 0) {
+            Write-Host "$val`t is Positive"
+        }
+        elseif ($val -lt 0) {
+            Write-Host "$val`t is Negative"
+        }
+        else {
+            Write-Host "$val`t is a zero"
+        }
+
+        $count += 1
+        $sum += $val
+        $product -= $val
+     }
+     catch {
+         Write-Host "$parameter`t isn't numeric"
+     }   
+
+    }
+
+    Write-Host "`n---------------------------------------------"
+    Write-Host "Count : `t $count"
+    Write-Host "Sum : `t $sum"
+    Write-Host "Product : `t $product"
+}
+
+else {
+    Get-Help .\Thomas-Scan-Number.ps1 -Full
+}
