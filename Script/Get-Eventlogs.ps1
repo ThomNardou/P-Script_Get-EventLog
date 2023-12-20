@@ -126,13 +126,38 @@ else
 
             if ($session) {
 
+<<<<<<< Updated upstream
                 $eventLog = Invoke-Command -Session $session -ScriptBlock {
     
                     Get-EventLog $eventList[$chosenEvent] | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
 
                 }
+=======
 
-                Write-Output $eventLog > "./Logs/$date`_$computer`_logs.log"
+
+
+                $eventLog = Invoke-Command -Session $session -ScriptBlock {
+                    param($events, $computerName)
+
+                    if (![System.Diagnostics.EventLog]::Exists($events)) {
+                        return $false
+                    } else {
+                        Get-EventLog $events | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
+                    }
+
+                } -ArgumentList $eventList[$chosenEvent], $computer
+>>>>>>> Stashed changes
+
+
+                if($eventLog.length -eq 0) {
+                    Write-Output "Le Pc avec le nom $($computer) ne possède pas de journaux windows possèdant le nom $($eventList[$chosenEvent])" > "./Logs/$date`_$computer`_error.log"
+                }
+                else {
+                    Write-Output $eventLog > "./Logs/$date`_$computer`_logs.log"
+                }
+
+
+                
             }
         } 
     
