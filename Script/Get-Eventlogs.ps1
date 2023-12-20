@@ -132,11 +132,12 @@ else
 
             if ($session) {
 
+
                 $eventLog = Invoke-Command -Session $session -ScriptBlock {
                     param($events)
 
                     if (!$events) {
-                        Write-Output "Le Pc avec le nom $($computer) ne poss�de pas de journaux windows poss�dant ce nom " >> "./Logs/$date`_error.log"
+                        Write-Output "Le Pc avec le nom $($computer) ne possède pas de journaux windows possèdant ce nom " >> "./Logs/$date`_error.log"
                     }
                     else {
                         Get-EventLog $events | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
@@ -144,7 +145,16 @@ else
 
                 } -ArgumentList $eventList[$chosenEvent]
 
-                Write-Output $eventLog > "./Logs/$date`_$computer`_logs.log"
+
+                if($eventLog.length -eq 0) {
+                    Write-Output "Le Pc avec le nom $($computer) ne possède pas de journaux windows possèdant le nom $($eventList[$chosenEvent])" > "./Logs/$date`_$computer`_error.log"
+                }
+                else {
+                    Write-Output $eventLog > "./Logs/$date`_$computer`_logs.log"
+                }
+
+
+                
             }
         } 
     

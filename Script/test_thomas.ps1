@@ -57,6 +57,8 @@ param (
 # Comments for variables
 $fileContent = Get-Content -Path $ComputerPath
 
+Set-Variable ERROR_MESSAGE -Option Constant -Value "Une erreur s'est produit lors de la connection au"
+
 ###################################################################################################################
 # Area for the tests, for example admin rights, existing path or the presence of parameters
 
@@ -83,25 +85,24 @@ else {
         $password = ConvertTo-SecureString "ETML_2023" -AsPlainText -Force
 
         $cred = New-Object System.Management.Automation.PSCredential ("user", $password)
+
         try {
             $session = New-PSSession $computer -Credential $cred -ErrorAction Stop
+
+            if ($session) {
+
+                $eventLog = Invoke-Command -Session $session -ScriptBlock {
+    
+                    Get-EventLog security | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
+
+                }
+
+                Write-Output $eventLog > "./Logs/$date`_$computer`_logs.log"
+            }
         } 
     
         catch {
-            Write-Error("Une erreur s'est produit lors de la connection au $($computer): $($_)")
+            Write-Output "$($ERROR_MESSAGE) $($computer)" >> "./Logs/$date`_error.log"
         }
-
-        if ($session) {
-
-            $eventLog = Invoke-Command -Session $session -ScriptBlock {
-    
-                Get-EventLog security | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
-
-            }
-
-            Write-Output $eventLog > "./Logs/$date`_$computer.txt"
-        }
-
-    
     }
 }
