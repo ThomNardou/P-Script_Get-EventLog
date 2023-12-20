@@ -61,7 +61,7 @@ Set-Variable ERROR_MESSAGE -Option Constant -Value "Une erreur s'est produit lor
 # Display help if at least on parameter is missing
 if(!$ComputerPath)
 {
-    throw [System.ArgumentException]::new("The path was invalid");
+    .\Get-Eventlogs.ps1 Get-Help
 }
 
 ###################################################################################################################
@@ -117,6 +117,11 @@ else
         New-Item -ItemType Directory -Force -Name "Logs"
     }
 
+    if (!(Test-Path "./Logs/Error")) {
+        Write-Host "test"
+        New-Item -ItemType Directory -Force -Name "Error" -Path "./Logs"
+    }
+
 
 
 
@@ -128,6 +133,7 @@ else
         $cred = New-Object System.Management.Automation.PSCredential ("user", $password)
 
         try {
+
             $session = New-PSSession $computer -Credential $cred -ErrorAction Stop
 
             if ($session) {
@@ -136,8 +142,8 @@ else
                 $eventLog = Invoke-Command -Session $session -ScriptBlock {
                     param($events)
 
-                    if (!$events) {
-                        Write-Output "Le Pc avec le nom $($computer) ne possède pas de journaux windows possèdant ce nom " >> "./Logs/$date`_error.log"
+                    if ([System.Diagnostics.EventLog]::SourceExists($events) -eq $false) {
+                        return $false
                     }
                     else {
                         Get-EventLog $events | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
@@ -146,22 +152,18 @@ else
                 } -ArgumentList $eventList[$chosenEvent]
 
 
-                if($eventLog.length -eq 0) {
-                    Write-Output "Le Pc avec le nom $($computer) ne possède pas de journaux windows possèdant le nom $($eventList[$chosenEvent])" > "./Logs/$date`_$computer`_error.log"
+                if($eventLog -eq $false) {
+                    Write-Output "Le Pc avec le nom $($computer) ne poss�de pas de journaux windows poss�dant le nom $($eventList[$chosenEvent])" >> "./Logs/Error/$date`_$computer`_error.log"
                 }
                 else {
-                    Write-Output $eventLog > "./Logs/$date`_$computer`_logs.log"
+                    Write-Output $eventLog >> "./Logs/$date`_$computer`_logs.log"
                 }
-
-
-                
             }
         } 
     
         catch {
-            Write-Output "$($ERROR_MESSAGE) $($computer)" >> "./Logs/$date`_error.log"
+            Write-Output "$($ERROR_MESSAGE) $($computer)" >> "./Logs/Error/$date`_error.log"
         }
     }
 
-}# endif
-
+}
