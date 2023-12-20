@@ -34,7 +34,7 @@
         
 	
 .EXAMPLE
-	.\Get-Eventlogs.ps1 -ComputerPath 
+	.\Get-Eventlogs.ps1
 	Result : Affiche l'aide du script
 	
 .LINK
