@@ -48,6 +48,8 @@ param(
 
 ###################################################################################################################
 
+$logPathStart = "./Logs"
+
 function TestAdmin {
     $identity  = [System.Security.Principal.WindowsIdentity]::GetCurrent()
     $principal = New-Object System.Security.Principal.WindowsPrincipal($identity)
@@ -117,13 +119,13 @@ else
 
 
         # check if log directory exists
-        if (-not (Test-Path "./Logs")) {
+        if (-not (Test-Path $logPathStart)) {
             # Create direactory 
             New-Item -ItemType Directory -Force -Name "Logs"
         }
 
         # check if error direactory exist
-        if (!(Test-Path "./Logs/Error")) {
+        if (!(Test-Path "$($logPathStart)/Error")) {
             # Create direactory 
             New-Item -ItemType Directory -Force -Name "Error" -Path "./Logs"
         }
@@ -135,8 +137,8 @@ else
 
             
             $date = Get-Date -Format "yyyy-MM-dd-hh-mm"
-            $errorPath = "./Logs/Error/$($date)_$($computer.MachineName)`_error.log"
-            $logPath = "./Logs/$($date)_$($computer.MachineName)_logs.log"
+            $errorPath = "$($logPathStart)/Error/$($date)_$($computer.MachineName)`_error.log"
+            $logPath = "$($logPathStart)/$($date)_$($computer.MachineName)_logs.log"
 
             # Converts plain text or encrypted strings to secure strings.
             $password = ConvertTo-SecureString $computer.Password -AsPlainText -Force
