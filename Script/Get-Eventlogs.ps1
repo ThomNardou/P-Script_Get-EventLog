@@ -12,17 +12,17 @@
  	Reasons: -
  	*****************************************************************************
 .SYNOPSIS
-	Va chercher les journaux d'évenement de tout les PC d'un parc informatique et va écrire les évenments dans un fichier log
+	Va chercher les journaux d'ï¿½venement d'un type choisi de tout les PC d'un parc informatique et va ï¿½crire les ï¿½venments dans un fichier log
  	
 .DESCRIPTION
-    Va cherche l'event log de tous les pc d'un parc informatique avec une liste donnée contenant : le nom de chaque PC, les noms des utilisateur et leur mot de passe.
-    un fichier .log sera créer pour chaque PC et leur contenu sera les évenement des PC 
+    Va cherche l'event log du type choisi de tous les pc d'un parc informatique avec une liste donnï¿½e contenant : le nom de chaque PC, les noms des utilisateur et leur mot de passe.
+    un fichier .log sera crï¿½er pour chaque PC et leur contenu sera les ï¿½venement des PC 
   	
 .PARAMETER ComputerPath
-    chemin d'accès vers la liste contenant les noms des pc, les users de chaque ordinateur correspondant et leurs mot de passe
+    chemin d'accï¿½s vers la liste contenant les noms des pc, les users de chaque ordinateur correspondant et leurs mot de passe
 
 .OUTPUTS
-	Va créer un fichier log dans un dossier logs qui se trouve au même endroit que le script
+	Va crï¿½er un fichier log dans un dossier logs qui se trouve au mï¿½me endroit que le script
 	
 .EXAMPLE
 	.\Get-Eventlogs.ps1 -ComputerPath "C:\Users\User\Documents\list.txt" 
@@ -30,7 +30,7 @@
 
         imeGenerated        MachineName Source                              Message                                                                                                                                         
         -------------       ----------- ------                              -------                                                                                                                                         
-        13.12.2023 14:11:50 PC3         Microsoft-Windows-Security-Auditing Fermeture de session d’un compte....  
+        13.12.2023 14:11:50 PC3         Microsoft-Windows-Security-Auditing Fermeture de session dï¿½un compte....  
         
 	
 .EXAMPLE
@@ -49,6 +49,8 @@ param(
 ###################################################################################################################
 
 $logPathStart = "./Logs"
+$dirErrorName = "$($dirErrorName)"
+$dirLogName = "Logs"
 
 function TestAdmin {
     $identity  = [System.Security.Principal.WindowsIdentity]::GetCurrent()
@@ -117,28 +119,26 @@ else
 
         #---------------------------------------------------------- Get-Event log part ----------------------------------------------------------#
 
-
         # check if log directory exists
         if (-not (Test-Path $logPathStart)) {
             # Create direactory 
-            New-Item -ItemType Directory -Force -Name "Logs"
+            New-Item -ItemType Directory -Force -Name $dirLogName
         }
 
         # check if error direactory exist
-        if (!(Test-Path "$($logPathStart)/Error")) {
+        if (!(Test-Path "$($logPathStart)/$($dirErrorName)")) {
             # Create direactory 
-            New-Item -ItemType Directory -Force -Name "Error" -Path "./Logs"
+            New-Item -ItemType Directory -Force -Name $dirErrorName -Path $logPathStart
         }
 
         # Take the content of the list
         $fileContent = Import-CSV -Path $ComputerPath -Delimiter ";"
 
         foreach ($computer in $fileContent) {
-
-            
+        
             $date = Get-Date -Format "yyyy-MM-dd-hh-mm"
-            $errorPath = "$($logPathStart)/Error/$($date)_$($computer.MachineName)`_error.log"
-            $logPath = "$($logPathStart)/$($date)_$($computer.MachineName)_logs.log"
+            $errorPath = "$($logPathStart)/$($dirErrorName)/$($date)_$($computer.MachineName)`_error.txt"
+            $logPath = "$($logPathStart)/$($date)_$($computer.MachineName)_logs.txt"
 
             # Converts plain text or encrypted strings to secure strings.
             $password = ConvertTo-SecureString $computer.Password -AsPlainText -Force
@@ -156,21 +156,21 @@ else
 
                     # Execute the event log command into the remote machine 
                     $eventLog = Invoke-Command -Session $session -ScriptBlock {
-                        param($events)
+                        param($Events)
 
                         # if the event log doean't exist 
-                        if ([System.Diagnostics.EventLog]::SourceExists($events) -eq $false) {
+                        if ([System.Diagnostics.EventLog]::SourceExists($Event) -eq $false) {
                             return $false
                         }
                         else {
-                            Get-EventLog $events | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
+                            Get-EventLog $Event | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
                         }
 
                     } -ArgumentList $eventList[$chosenEvent]
 
                     # write error into a log file 
                     if($eventLog -eq $false) {
-                        Write-Output "Le Pc avec le nom $($computer.MachineName) ne possède pas de journaux windows possèdant le nom $($eventList[$chosenEvent])" >> $errorPath
+                        Write-Output "Le Pc avec le nom $($computer.MachineName) ne possÃ¨de pas de journaux windows possï¿½dant le nom $($eventList[$chosenEvent])" >> $errorPath
                     }
                     # write event log into a log file 
                     else {
