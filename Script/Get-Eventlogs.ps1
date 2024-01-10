@@ -12,17 +12,21 @@
  	Reasons: -
  	*****************************************************************************
 .SYNOPSIS
-	Va chercher les journaux d'evenement d'un type que l'utilisatur a choisi de tout les PC d'un parc informatique et va ecrire les �venments dans un fichier log
+	Retrieves and saves event logs from remote PCs.
  	
 .DESCRIPTION
-    Va cherche l'event log du type que l'utilisatur a choisi de tous les pc d'un parc informatique avec une liste donn�e contenant : le nom de chaque PC, les noms des utilisateur et leur mot de passe.
-    un fichier .log sera creer pour chaque PC et leur contenu sera les �venement des PC 
+	Retrieves logs from a user specified event, from remote PCs using a PC list file containing the machine names, usernames, and passwords.
+	A log file will be created for each PC containing the event logs. An error file will be created containing any errors encountered during the process.
   	
 .PARAMETER ComputerPath
-    chemin d'accees vers la liste contenant les noms des pc, les users de chaque ordinateur correspondant et leurs mot de passe.
+	The file path of the .txt file containing the machine names, usernames, and passwords in CSV format. 
+	Example:
+
+	MachineName;User;Password
+	<PC011>;<JohnDoe>;<123>
 
 .OUTPUTS
-	Va cr�er un fichier log dans un dossier logs qui se trouve au m�me endroit que le script
+	Creates a log and error folder if they don't exist, and a log and/or error files in the placement as the script.
 	
 .EXAMPLE
 	.\Get-Eventlogs.ps1 -ComputerPath "C:\Users\User\Documents\list.txt" 
@@ -35,7 +39,7 @@
 	
 .EXAMPLE
 	.\Get-Eventlogs.ps1
-	Result : Affiche l'aide du script
+	Result : Shows script help
 	
 .LINK
     -
@@ -116,9 +120,6 @@ else
         # Displays which option the user chose
         write-host "`nYou choose the" $eventList[$chosenEvent] "eventlog`n"
 
-
-        #---------------------------------------------------------- Get-Event log part ----------------------------------------------------------#
-
         # check if log directory exists
         if (-not (Test-Path $logPathStart)) {
             # Create direactory 
@@ -172,7 +173,7 @@ else
 
                     # write error into a log file 
                     if($eventLog -eq $false) {
-                        Write-Output "$($dateText) | Le Pc avec le nom $($computer.MachineName) ne possede pas de journaux windows possedant le nom $($eventList[$chosenEvent])" >> $errorPath
+                        Write-Output "$($dateText) | Le PC : $($computer.MachineName) does not have any windows logs by the name : $($eventList[$chosenEvent])" >> $errorPath
                     }
                     # write event log into a log file 
                     else {
@@ -183,7 +184,7 @@ else
             # if the connection could not be made
             catch {
                 # write error into a log file 
-                Write-Output "$($dateText) | Une erreur s'est produit lors de la connection au $($computer.MachineName)" >> $errorPath
+                Write-Output "$($dateText) | An error occurred while connecting to PC : $($computer.MachineName)" >> $errorPath
             }
         }
     }
