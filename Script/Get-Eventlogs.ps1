@@ -12,14 +12,14 @@
  	Reasons: -
  	*****************************************************************************
 .SYNOPSIS
-	Va chercher les journaux d'�venement d'un type choisi de tout les PC d'un parc informatique et va �crire les �venments dans un fichier log
+	Va chercher les journaux d'evenement d'un type que l'utilisatur a choisi de tout les PC d'un parc informatique et va ecrire les �venments dans un fichier log
  	
 .DESCRIPTION
-    Va cherche l'event log du type choisi de tous les pc d'un parc informatique avec une liste donn�e contenant : le nom de chaque PC, les noms des utilisateur et leur mot de passe.
-    un fichier .log sera cr�er pour chaque PC et leur contenu sera les �venement des PC 
+    Va cherche l'event log du type que l'utilisatur a choisi de tous les pc d'un parc informatique avec une liste donn�e contenant : le nom de chaque PC, les noms des utilisateur et leur mot de passe.
+    un fichier .log sera creer pour chaque PC et leur contenu sera les �venement des PC 
   	
 .PARAMETER ComputerPath
-    chemin d'acc�s vers la liste contenant les noms des pc, les users de chaque ordinateur correspondant et leurs mot de passe
+    chemin d'accees vers la liste contenant les noms des pc, les users de chaque ordinateur correspondant et leurs mot de passe.
 
 .OUTPUTS
 	Va cr�er un fichier log dans un dossier logs qui se trouve au m�me endroit que le script
@@ -49,7 +49,7 @@ param(
 ###################################################################################################################
 
 $logPathStart = "./Logs"
-$dirErrorName = "$($dirErrorName)"
+$dirErrorName = "Errors"
 $dirLogName = "Logs"
 
 function TestAdmin {
@@ -137,6 +137,8 @@ else
         foreach ($computer in $fileContent) {
         
             $date = Get-Date -Format "yyyy-MM-dd-hh-mm"
+            $dateText = Get-Date -Format "yyyy MM dd HH:mm:ss"
+
             $errorPath = "$($logPathStart)/$($dirErrorName)/$($date)_$($computer.MachineName)`_error.txt"
             $logPath = "$($logPathStart)/$($date)_$($computer.MachineName)_logs.txt"
 
@@ -157,20 +159,20 @@ else
                     # Execute the event log command into the remote machine 
                     $eventLog = Invoke-Command -Session $session -ScriptBlock {
                         param($Events)
-
+                      
                         # if the event log doean't exist 
-                        if ([System.Diagnostics.EventLog]::SourceExists($Event) -eq $false) {
+                        if ([System.Diagnostics.EventLog]::SourceExists($Events) -eq $false) {
                             return $false
                         }
                         else {
-                            Get-EventLog $Event | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
+                            Get-EventLog $Events | Select-Object -Property TimeGenerated, MachineName, Source, Message | Format-Table -AutoSize
                         }
 
                     } -ArgumentList $eventList[$chosenEvent]
 
                     # write error into a log file 
                     if($eventLog -eq $false) {
-                        Write-Output "Le Pc avec le nom $($computer.MachineName) ne possède pas de journaux windows poss�dant le nom $($eventList[$chosenEvent])" >> $errorPath
+                        Write-Output "$($dateText) | Le Pc avec le nom $($computer.MachineName) ne possede pas de journaux windows possedant le nom $($eventList[$chosenEvent])" >> $errorPath
                     }
                     # write event log into a log file 
                     else {
@@ -181,7 +183,7 @@ else
             # if the connection could not be made
             catch {
                 # write error into a log file 
-                Write-Output "Une erreur s'est produit lors de la connection au $($computer.MachineName)" >> $errorPath
+                Write-Output "$($dateText) | Une erreur s'est produit lors de la connection au $($computer.MachineName)" >> $errorPath
             }
         }
     }
